@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ekdanta-distributors
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: ADMIN_KEY
+        generateValue: true
